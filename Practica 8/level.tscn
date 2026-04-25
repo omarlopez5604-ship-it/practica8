@@ -1,0 +1,208 @@
+[gd_scene format=3 uid="uid://cgubbxh5khd2"]
+
+[ext_resource type="Script" uid="uid://cut1k0lr1ngdb" path="res://level.gd" id="1_f2txt"]
+[ext_resource type="Script" uid="uid://dhisc5jin1rsr" path="res://cubo.gd" id="1_vonw3"]
+[ext_resource type="PackedScene" uid="uid://ddhbwee2kcyr0" path="res://cubo.glb" id="2_oi3di"]
+[ext_resource type="Script" uid="uid://di5m5327nfba5" path="res://npc.gd" id="3_oi3di"]
+[ext_resource type="Script" uid="uid://gvtobaymqr8" path="res://collectible.gd" id="5_f2txt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i2t4f"]
+size = Vector3(0.89019775, 1.5690918, 0.46704102)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f2txt"]
+size = Vector3(20, 0.5, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ainy"]
+albedo_color = Color(0.05882353, 0.9137255, 0.03529412, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ainy"]
+size = Vector3(20, 0.5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f2txt"]
+size = Vector3(1.1612695, 2.3270855, 0.47990847)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oi3di"]
+size = Vector3(2.0563965, 2.7350922, 1.8305092)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ainy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2txt"]
+albedo_color = Color(0.32156864, 0.36078432, 0.011764706, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n6hdu"]
+
+[node name="Level" type="Node3D" unique_id=1929827866]
+script = ExtResource("1_f2txt")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1860889425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08480501, 0)
+script = ExtResource("1_vonw3")
+
+[node name="cubo" parent="Player" unique_id=1231339642 instance=ExtResource("2_oi3di")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6447041, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=274176070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8189771, 1.5543156, 1.1457906)
+shape = SubResource("BoxShape3D_i2t4f")
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1182652984]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=397660177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0023870468, -0.059425116, 0.015692234)
+mesh = SubResource("BoxMesh_f2txt")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ainy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=823299833]
+shape = SubResource("BoxShape3D_1ainy")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1380949921]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 10, 10)
+
+[node name="NPC" type="CharacterBody3D" parent="." unique_id=974824588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4634943, 0, 0)
+script = ExtResource("3_oi3di")
+
+[node name="cubo" parent="NPC" unique_id=443378405 instance=ExtResource("2_oi3di")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9270287, 0.6578866, -0.010053158)
+
+[node name="Timer" type="Timer" parent="NPC" unique_id=1816403118]
+wait_time = 2.0
+autostart = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC" unique_id=119523316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.37852, 1.3857592, 1.1174543)
+shape = SubResource("BoxShape3D_f2txt")
+
+[node name="Area3D" type="Area3D" parent="NPC" unique_id=721653288]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC/Area3D" unique_id=2131048672]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3932633, 1.4684072, 0.97926986)
+shape = SubResource("BoxShape3D_oi3di")
+
+[node name="NPC2" type="CharacterBody3D" parent="." unique_id=567584300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4634943, 0, 0)
+script = ExtResource("3_oi3di")
+
+[node name="cubo" parent="NPC2" unique_id=261120935 instance=ExtResource("2_oi3di")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9270287, 0.6578866, 2.030845)
+
+[node name="Timer" type="Timer" parent="NPC2" unique_id=945305636]
+wait_time = 2.0
+autostart = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC2" unique_id=1715197053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.067075, 1.5422772, 3.1798248)
+shape = SubResource("BoxShape3D_f2txt")
+
+[node name="Area3D" type="Area3D" parent="NPC2" unique_id=2023941811]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC2/Area3D" unique_id=1321116854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.350661, 1.5996251, 3.1942854)
+shape = SubResource("BoxShape3D_oi3di")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1804961916]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=2084288904]
+anchors_preset = -1
+anchor_left = 0.266
+anchor_top = 0.20700002
+anchor_right = 0.441
+anchor_bottom = 0.31800002
+offset_left = 147.568
+offset_top = -74.13602
+offset_right = 126.96799
+offset_bottom = -121.06401
+text = "EVITA A LOS NPCs!!!!!!!!!"
+uppercase = true
+
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=2003125906]
+offset_left = 496.0
+offset_top = 17.0
+offset_right = 594.0
+offset_bottom = 40.0
+text = "MONEDAS: 0"
+
+[node name="Label3" type="Label" parent="CanvasLayer" unique_id=747495514]
+offset_left = 8.0
+offset_top = 442.0
+offset_right = 159.0
+offset_bottom = 465.0
+text = "Cargando consejo..."
+
+[node name="HighScoreLabel" type="Label" parent="CanvasLayer" unique_id=593487470]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "High Score: 0"
+
+[node name="Collectible" type="Area3D" parent="." unique_id=1712510587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.213333, 1.2386092, 0)
+script = ExtResource("5_f2txt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Collectible" unique_id=733400507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.50939846, 0)
+mesh = SubResource("BoxMesh_1ainy")
+surface_material_override/0 = SubResource("StandardMaterial3D_f2txt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collectible" unique_id=868587690]
+shape = SubResource("BoxShape3D_n6hdu")
+
+[node name="Collectible2" type="Area3D" parent="." unique_id=919466128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.213333, 1.2386092, 3.0483418)
+script = ExtResource("5_f2txt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Collectible2" unique_id=1501914128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.50939846, 0)
+mesh = SubResource("BoxMesh_1ainy")
+surface_material_override/0 = SubResource("StandardMaterial3D_f2txt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collectible2" unique_id=1426761707]
+shape = SubResource("BoxShape3D_n6hdu")
+
+[node name="Collectible3" type="Area3D" parent="." unique_id=1534845185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26508808, 1.2386092, 6.331317)
+script = ExtResource("5_f2txt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Collectible3" unique_id=594372149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.50939846, 0)
+mesh = SubResource("BoxMesh_1ainy")
+surface_material_override/0 = SubResource("StandardMaterial3D_f2txt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collectible3" unique_id=1943772860]
+shape = SubResource("BoxShape3D_n6hdu")
+
+[node name="Collectible4" type="Area3D" parent="." unique_id=1098201365]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26508808, 1.2386092, -3.8792067)
+script = ExtResource("5_f2txt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Collectible4" unique_id=263482384]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.50939846, 0)
+mesh = SubResource("BoxMesh_1ainy")
+surface_material_override/0 = SubResource("StandardMaterial3D_f2txt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collectible4" unique_id=2037622484]
+shape = SubResource("BoxShape3D_n6hdu")
+
+[node name="Collectible5" type="Area3D" parent="." unique_id=291981743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.247728, 1.2386092, 1.7366323)
+script = ExtResource("5_f2txt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Collectible5" unique_id=85378934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.50939846, 0)
+mesh = SubResource("BoxMesh_1ainy")
+surface_material_override/0 = SubResource("StandardMaterial3D_f2txt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collectible5" unique_id=462174516]
+shape = SubResource("BoxShape3D_n6hdu")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=14650332]
+
+[connection signal="timeout" from="NPC/Timer" to="NPC" method="_on_timer_timeout"]
+[connection signal="body_entered" from="NPC/Area3D" to="NPC" method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="NPC2/Timer" to="NPC2" method="_on_timer_timeout"]
+[connection signal="body_entered" from="NPC2/Area3D" to="NPC2" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Collectible" to="Collectible" method="_on_body_entered"]
+[connection signal="body_entered" from="Collectible2" to="Collectible2" method="_on_body_entered"]
+[connection signal="body_entered" from="Collectible3" to="Collectible3" method="_on_body_entered"]
+[connection signal="body_entered" from="Collectible4" to="Collectible4" method="_on_body_entered"]
+[connection signal="body_entered" from="Collectible5" to="Collectible5" method="_on_body_entered"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
